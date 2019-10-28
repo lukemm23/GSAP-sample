@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prime GSAP Animation</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #A3C6C4;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            display: inline-block;
+            margin-top: 2rem;
+            font-size: 3rem;
+        }
+        .content {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+        }
+        .logo {
+            width: 30vw;
+            display: block;
+            margin-top: 5vh;
+        }
+        .background { 
+            background: url(images/background.png) no-repeat center;
+            background-size: contain;
+            width: 100%;
+            height: 70vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        .banner{
+            display: inline-block;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="wrapper">
+        <div class="content">
+            <img class="logo" src="images/prime-20logo-20color.png" alt="prime logo">
+            <br>
+            <h1>GSAP Animations!</h1>
+        </div>
+        <div class="background"></div>
+        <img class="banner" id="banner1" src="images/estalished.png" alt="estalished school">
+        <img class="banner" id="banner2" src="images/transparent.png" alt="estalished school">
+        <img class="banner" id="banner3" src="images/lgalum.png" alt="estalished school">
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+<script>
+    // Syntax formation:
+    // TweenMax.origin(target, duration, {variables});
+
+    // examples:
+    // TweenMax.to('.logo',1,{opacity:0});
+    // TweenMax.from('.logo',2,{opacity:0});
+    // TweenMax.from('.logo',2,{scale:0.1});
+
+    // animating multiple elements:
+    // TweenMax.from('.logo',2,{scale:0.1});
+    // TweenMax.from('.background',2,{opacity:0,scale:0, delay:1});
+    // TweenMax.from('h1',3,{opacity:0,scale:2, delay:1});
+
+    // using delays to manage longer animations
+    // instead, use GSAP timeline sequential chain to manage
+    // var timeline = new TimelineMax();
+    // timeline.from('.logo', 1, {scale:0})
+    // timeline.from('.background', 0.5, {scale:0})
+    // timeline.from('h1', 0.5, {opacity:0,scale:2})
+
+    // easing
+    //refer to https://greensock.com/ease-visualizer
+    var timeline = new TimelineMax();
+    timeline.timeScale(2);
+    timeline.from('.logo',2,{scale:0, ease:Bounce.easeOut})
+    timeline.from('.background', 1, {scale:0})
+    timeline.from('h1', 0.7, {opacity:0, scale:2, ease:Back.easeOut.config(4)})
+    timeline.from('#banner2',2,{scale:0});
+    timeline.from('#banner1',2,{x:-200, rotation:-90, scale:0, ease:Back.easeOut});
+    timeline.from('#banner3',2,{x:200, rotation:90, scale:0, ease:Back.easeOut});
+    // timeline.from('#banner1', 3,{x:'+=100', opacity0, ease:Back.easeOut.config(4)});
+    // timeline.from('#banner3', 3,{x:'+=100', opacity0, ease:Back.easeOut.config(4)});
+    
+
+</script>
+</body>
+</html>
+
